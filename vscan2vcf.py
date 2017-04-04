@@ -114,7 +114,6 @@ def makeVcfRecord(nativeIp):
     pos = nIp[1]
     id = '.'
     ref = nIp[2]
-    alt = nIp[3]
     qual = '.'
     filter = 'PASS'
     dp = int(nIp[4]) + int(nIp[5]) + int(nIp[8]) + int(nIp[9])
@@ -167,8 +166,16 @@ def makeVcfRecord(nativeIp):
     dp42 = nIp[15] + ',' + nIp[16] + ',' + nIp[17] + ',' + nIp[19]
     tumor_format = gt2 + ':' + gq + ":" + str(dp3) + ':' + rd2 + ':' + ad2 + ':' + freq2 + ':' + dp42
 
-#    print("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" %
-#          (chrom, pos, id, ref, alt, qual, filter, info, vcf_format, normal_format, tumor_format))
+    alt = nIp[3]
+
+    #
+    # VarScan has tricky output format for indels (why would they do that in the first place?)
+    #
+
+    if alt[0] == '-':
+        alt = alt.replace('-', '')
+    elif alt[0] == '+':
+        alt = ref + alt.replace('+', '')
 
     print("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (chrom, pos, id, ref, alt, qual, filter, info))
 

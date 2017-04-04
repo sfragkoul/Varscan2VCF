@@ -1,2 +1,2 @@
-# Varscan2VCF
-Convert VarScan output to VCF format
+## Summary
+Convert from VarScan output to VCF format.

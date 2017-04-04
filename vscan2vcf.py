@@ -120,7 +120,12 @@ def makeVcfRecord(nativeIp):
     filter = 'PASS'
     dp = int(nIp[4]) + int(nIp[5]) + int(nIp[8]) + int(nIp[9])
     ss = somaticDict[nIp[12]]
-    ssc = -10 * math.log10(float(nIp[14]))
+
+    try:
+        ssc = -10 * math.log10(float(nIp[14]))
+    except Exception:
+        ssc = 0
+
     gpv = nIp[13]
     spv = nIp[14]
     if ss == '2':

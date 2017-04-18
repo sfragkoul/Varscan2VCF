@@ -25,6 +25,7 @@ def printNativeHeader():
 def printVcfHeader():
     print("##fileformat=VCFv4.1\n"
           "##source=VarScan2\n"
+          "##INFO=<ID=AF,Number=A,Type=Float,Description=\"Allele Frequency\">\n"
           "##INFO=<ID=DP,Number=1,Type=Integer,Description=\"Total depth of quality bases\">\n"
           "##INFO=<ID=SOMATIC,Number=0,Type=Flag,Description=\"Indicates if record is a somatic mutation\">\n"
           "##INFO=<ID=SS,Number=1,Type=String,Description=\"Somatic status of variant (0=Reference,1=Germline,2=Somatic,3=LOH, or 5=Unknown)\">\n"
@@ -99,9 +100,6 @@ def makeNativeRec(vcfIp):
            tumor_reads1_minus, tumor_reads2_plus, tumor_reads2_minus, normal_reads1_plus, normal_reads1_minus,
            normal_reads2_plus, normal_reads2_minus))
 
-
-#####
-
 # Function to convert Native to VCF record
 def makeVcfRecord(nativeIp):
     """
@@ -126,11 +124,14 @@ def makeVcfRecord(nativeIp):
 
     gpv = nIp[13]
     spv = nIp[14]
+    
+    tumorAF = float(nIp[10].replace('%', '')) / 100
+    
     if ss == '2':
-        info = "DP=" + str(dp) + ";SOMATIC;" + "SS=" + ss + ";" + "SSC=" + str(
+        info = "AF=" + str(tumorAF) + ";DP=" + str(dp) + ";SOMATIC;" + "SS=" + ss + ";" + "SSC=" + str(
             int(ssc)) + ";" + "GPV=" + gpv + ";" + "SPV=" + spv
     else:
-        info = "DP=" + str(dp) + ";" + "SS=" + ss + ";" + "SSC=" + str(
+        info = "AF=" + str(tumorAF) + ";DP=" + str(dp) + ";SS=" + ss + ";" + "SSC=" + str(
             int(ssc)) + ";" + "GPV=" + gpv + ";" + "SPV=" + spv
 
     vcf_format = "GT:GQ:DP:RD:AD:FREQ:DP4"
@@ -176,7 +177,7 @@ def makeVcfRecord(nativeIp):
         alt = alt.replace('-', '')
     elif alt[0] == '+':
         alt = ref + alt.replace('+', '')
-
+        
     print("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (chrom, pos, id, ref, alt, qual, filter, info))
 
 ####

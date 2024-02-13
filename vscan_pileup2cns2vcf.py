@@ -32,7 +32,7 @@ def printVcfHeader():
           "##INFO=<ID=Reads2Minus,Number=1,Type=Integer,Description=\"Number of reference-supporting reads on - strand\">\n"
           "##INFO=<ID=VarAllele,Number=1,Type=String,Description=\"Most frequent non-reference allele observed\">\n"
           "##INFO=<ID=AF,Number=1,Type=Float,Description=\" frequent of variant\">\n"
-          
+          "##contig=<ID=hg38_knownGene_ENST00000610292.4,length=19080>"
 #          "##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n"
 #          "##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=\"Genotype Quality\">\n"
 #          "##FORMAT=<ID=DP,Number=1,Type=Integer,Description=\"Read Depth\">\n"

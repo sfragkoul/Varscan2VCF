@@ -55,12 +55,22 @@ def makeVcfRecord(nativeIp):
     id = '.'
     ref = nIp[2]
     #alt =  nIp[18]
-    qual = '.'
-    filter = '.'
+    strands1 = nIp[7]
+    strands2 = nIp[8]
+    qual1 = nIp[9]
+    qual2 = nIp[10]
+    pvalue = nIp[11]
+    mapqual1 = nIp[12]
+    mapqual2 = nIp[13]
+    reads1plus = nIp[14]
+    reads1minus = nIp[15]
+    reads2plus = nIp[16]
+    reads2minus = nIp[17]
     dp = int(nIp[4]) + int(nIp[5])
     varfreq = float(nIp[6].replace('%', '')) / 100
     varfreq = round(varfreq, 3)
-    info = "AF=" + str(varfreq) + ";DP=" + str(dp) 
+    info = "AF=" + str(varfreq) + ";DP=" + str(dp) + ";Strands1=" + str(strands1)+ ";Strands2=" + str(strands2) + ";Qual1=" + str(qual1)+ ";Qual2=" + str(qual2) + ";Pvalue=" + str(pvalue) + ";MapQual1=" +	str(mapqual1) + ";MapQual2=" +	str(mapqual2)	+ ";Reads1Plus=" +	str(reads1plus) + ";Reads1Minus=" +	str(reads1minus) + ";Reads2Plus=" + str(reads2plus) + ";Reads2Minus=" + str(reads2minus)
+
     vcf_format = "GT:GQ:DP:RD:AD:FREQ:DP4"
     alt = nIp[-1]
 
@@ -68,10 +78,10 @@ def makeVcfRecord(nativeIp):
     # VarScan has tricky output format for indels (why would they do that in the first place?)
     #
 
-    # if alt[0] == '-':
-        # alt = alt.replace('-', '')
-    # elif alt[0] == '+':
-        # alt = ref + alt.replace('+', '')
+    if alt[0] == '-':
+        alt = alt.replace('-', '')
+    elif alt[0] == '+':
+        alt = ref + alt.replace('+', '')
         
     print("%s\t%s\t%s\t%s\t%s\t%s" % (chrom, pos, id, ref, alt, info))
 

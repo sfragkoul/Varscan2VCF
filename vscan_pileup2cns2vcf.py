@@ -16,6 +16,7 @@ args = parser.parse_args()
 def printVcfHeader():
     print("##fileformat=VCFv4.2\n"
         "##source=VarScan2\n"
+        "##INFO=<ID=DP,Number=1,Type=Integer,Description=\"read depth\">\n"
         "##INFO=<ID=Reads1,Number=1,Type=Integer,Description=\"reads supporting reference allele\">\n"
         "##INFO=<ID=Reads2,Number=1,Type=Integer,Description=\"reads supporting variant allele\">\n"
         "##INFO=<ID=VarFreq,Number=1,Type=String,Description=\"frequency of variant allele by read count\">\n"
@@ -53,6 +54,8 @@ def makeVcfRecord(nativeIp):
     chrom = nIp[0]
     pos = nIp[1]
     id = '.'
+    qual = '.'
+    filter = '.'
     ref = nIp[2]
     #alt =  nIp[18]
     strands1 = nIp[7]
@@ -83,7 +86,7 @@ def makeVcfRecord(nativeIp):
     elif alt[0] == '+':
         alt = ref + alt.replace('+', '')
         
-    print("%s\t%s\t%s\t%s\t%s\t%s" % (chrom, pos, id, ref, alt, info))
+    print("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s" % (chrom, pos, id, ref, alt, qual, filter, info))
 
 ####
 def NativeToVcf(inputFile):

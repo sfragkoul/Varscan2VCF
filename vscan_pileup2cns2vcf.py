@@ -14,7 +14,7 @@ args = parser.parse_args()
 
 # Function to print vcf header
 def printVcfHeader():
-    print("##fileformat=VCFv4.1\n"
+    print("##fileformat=VCFv4.2\n"
           "##source=VarScan2\n"
           "##INFO=<ID=Reads1,Number=1,Type=Integer,Description=\"reads supporting reference allele\">\n"
           "##INFO=<ID=Reads2,Number=1,Type=Integer,Description=\"reads supporting variant allele\">\n"
@@ -32,7 +32,7 @@ def printVcfHeader():
           "##INFO=<ID=Reads2Minus,Number=1,Type=Integer,Description=\"Number of reference-supporting reads on - strand\">\n"
           "##INFO=<ID=VarAllele,Number=1,Type=String,Description=\"Most frequent non-reference allele observed\">\n"
           "##INFO=<ID=AF,Number=1,Type=Float,Description=\" frequent of variant\">\n"
-          "##contig=<ID=hg38_knownGene_ENST00000610292.4,length=19080>"
+          "##contig=<ID=hg38_knownGene_ENST00000610292.4,length=19080>\n"
 #          "##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n"
 #          "##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=\"Genotype Quality\">\n"
 #          "##FORMAT=<ID=DP,Number=1,Type=Integer,Description=\"Read Depth\">\n"
@@ -71,7 +71,7 @@ def makeVcfRecord(nativeIp):
     varfreq = round(varfreq, 3)
     info = "AF=" + str(varfreq) + ";DP=" + str(dp) + ";Strands1=" + str(strands1)+ ";Strands2=" + str(strands2) + ";Qual1=" + str(qual1)+ ";Qual2=" + str(qual2) + ";Pvalue=" + str(pvalue) + ";MapQual1=" +	str(mapqual1) + ";MapQual2=" +	str(mapqual2)	+ ";Reads1Plus=" +	str(reads1plus) + ";Reads1Minus=" +	str(reads1minus) + ";Reads2Plus=" + str(reads2plus) + ";Reads2Minus=" + str(reads2minus)
 
-    vcf_format = "GT:GQ:DP:RD:AD:FREQ:DP4"
+    #vcf_format = "GT:GQ:DP:RD:AD:FREQ:DP4"
     alt = nIp[-1]
 
     #

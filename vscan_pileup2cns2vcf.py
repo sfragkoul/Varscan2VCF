@@ -25,8 +25,6 @@ def printNativeHeader():
 def printVcfHeader():
     print("##fileformat=VCFv4.1\n"
           "##source=VarScan2\n"
-          Reads1	Reads2	VarFreq	Strands1	Strands2	Qual1	Qual2	Pvalue	MapQual1	MapQual2	Reads1Plus	Reads1Minus	Reads2Plus	Reads2Minus	VarAllele
-
           "##INFO=<ID=Reads1,Number=1,Type=Integer,Description=\"reads supporting reference allele\">\n"
           "##INFO=<ID=Reads2,Number=1,Type=Integer,Description=\"reads supporting variant allele\">\n"
           "##INFO=<ID=VarFreq,Number=1,Type=String,Description=\"frequency of variant allele by read count\">\n"
@@ -42,15 +40,13 @@ def printVcfHeader():
           "##INFO=<ID=Reads2Plus,Number=1,Type=Integer,Description=\"Number of reference-supporting reads on + strand\">\n"
           "##INFO=<ID=Reads2Minus,Number=1,Type=Integer,Description=\"Number of reference-supporting reads on - strand\">\n"
           "##INFO=<ID=VarAllele,Number=1,Type=String,Description=\"Most frequent non-reference allele observed\">\n"
-          
-          
-          "##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n"
-          "##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=\"Genotype Quality\">\n"
-          "##FORMAT=<ID=DP,Number=1,Type=Integer,Description=\"Read Depth\">\n"
-          "##FORMAT=<ID=RD,Number=1,Type=Integer,Description=\"Depth of reference-supporting bases (reads1)\">\n"
-          "##FORMAT=<ID=AD,Number=1,Type=Integer,Description=\"Depth of variant-supporting bases (reads2)\">\n"
-          "##FORMAT=<ID=FREQ,Number=1,Type=String,Description=\"Variant allele frequency\">\n"
-          "##FORMAT=<ID=DP4,Number=1,Type=String,Description=\"Strand read counts: ref/fwd, ref/rev, var/fwd, var/rev\">\n"
+#          "##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n"
+#          "##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=\"Genotype Quality\">\n"
+#          "##FORMAT=<ID=DP,Number=1,Type=Integer,Description=\"Read Depth\">\n"
+#          "##FORMAT=<ID=RD,Number=1,Type=Integer,Description=\"Depth of reference-supporting bases (reads1)\">\n"
+#          "##FORMAT=<ID=AD,Number=1,Type=Integer,Description=\"Depth of variant-supporting bases (reads2)\">\n"
+#          "##FORMAT=<ID=FREQ,Number=1,Type=String,Description=\"Variant allele frequency\">\n"
+#          "##FORMAT=<ID=DP4,Number=1,Type=String,Description=\"Strand read counts: ref/fwd, ref/rev, var/fwd, var/rev\">\n"         
           "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO")
 
 # Function to convert vcf record to NativeFormat record

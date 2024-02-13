@@ -79,28 +79,16 @@ def makeVcfRecord(nativeIp):
 def NativeToVcf(inputFile):
     printVcfHeader()
     vs = open(inputFile, 'r')
+    vs.readline().strip()
     for line in vs.readlines():
         if not line.startswith("chrom"):
             makeVcfRecord(line.strip())
     vs.close()
 
 
-###
-# def vcfToNative(inputFile):
-    # vs = open(inputFile, 'r')
-    # printNativeHeader()
-    # for line in vs.readlines():
-        # if not line.startswith("#"):
-            # makeNativeRec(line.strip())
-    # vs.close()
+#vsIp = open(args.input, 'r')
 
-####
-vsIp = open(args.input, 'r')
+#firstLine = vsIp.readline().strip()
 
-firstLine = vsIp.readline().strip()
-
-if firstLine.startswith("##fileformat="):
-    vcfToNative(args.input)
-else:
-    NativeToVcf(args.input)
-    vsIp.close()
+NativeToVcf(args.input)
+#vsIp.close()

@@ -17,7 +17,7 @@
 ##INFO=<ID=VarAllele,Number=1,Type=String,Description="Most frequent non-reference allele observed">
 ##INFO=<ID=AF,Number=1,Type=Float,Description=" frequent of variant">
 ##contig=<ID=hg38_knownGene_ENST00000610292.4,length=19080>
-#CHROM	POS	ID	REF	ALT	INFO
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
 hg38_knownGene_ENST00000610292.4	24	.	G	0	AF=0.0;DP=8;Strands1=1;Strands2=0;Qual1=33;Qual2=0;Pvalue=1.0;MapQual1=1;MapQual2=0;Reads1Plus=8;Reads1Minus=0;Reads2Plus=0;Reads2Minus=0
 hg38_knownGene_ENST00000610292.4	25	.	G	0	AF=0.0;DP=8;Strands1=1;Strands2=0;Qual1=33;Qual2=0;Pvalue=1.0;MapQual1=1;MapQual2=0;Reads1Plus=8;Reads1Minus=0;Reads2Plus=0;Reads2Minus=0
 hg38_knownGene_ENST00000610292.4	26	.	T	0	AF=0.0;DP=9;Strands1=1;Strands2=0;Qual1=33;Qual2=0;Pvalue=1.0;MapQual1=1;MapQual2=0;Reads1Plus=9;Reads1Minus=0;Reads2Plus=0;Reads2Minus=0

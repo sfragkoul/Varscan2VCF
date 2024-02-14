@@ -4,7 +4,6 @@
 ##INFO=<ID=DP,Number=1,Type=Integer,Description="read depth">
 ##INFO=<ID=Reads1,Number=1,Type=Integer,Description="reads supporting reference allele">
 ##INFO=<ID=Reads2,Number=1,Type=Integer,Description="reads supporting variant allele">
-##INFO=<ID=VarFreq,Number=1,Type=String,Description="frequency of variant allele by read count">
 ##INFO=<ID=Strands1,Number=1,Type=Integer,Description="strands on which reference allele was observed">
 ##INFO=<ID=Strands2,Number=1,Type=Integer,Description="strands on which variant allele was observed">
 ##INFO=<ID=Qual1,Number=1,Type=Integer,Description="average base quality of reference-supporting read bases">
@@ -16,11 +15,10 @@
 ##INFO=<ID=Reads1Minus,Number=1,Type=Integer,Description="Number of reference-supporting reads on - strand">
 ##INFO=<ID=Reads2Plus,Number=1,Type=Integer,Description="Number of reference-supporting reads on + strand">
 ##INFO=<ID=Reads2Minus,Number=1,Type=Integer,Description="Number of reference-supporting reads on - strand">
-##INFO=<ID=VarAllele,Number=1,Type=String,Description="Most frequent non-reference allele observed">
 ##INFO=<ID=AF,Number=1,Type=Float,Description=" frequent of variant">
 ##contig=<ID=hg38_knownGene_ENST00000610292.4,length=19080>
 ##bcftools_normVersion=1.16+htslib-1.16
-##bcftools_normCommand=norm --output VarScan2VCF/test_file_norm.vcf --output-type v -m - VarScan2VCF/test_file.vcf; Date=Tue Feb 13 16:56:15 2024
+##bcftools_normCommand=norm --output VarScan2VCF/test_file_norm.vcf --output-type v -m - VarScan2VCF/test_file.vcf; Date=Wed Feb 14 14:43:52 2024
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
 hg38_knownGene_ENST00000610292.4	24	.	G	0	.	.	AF=0;DP=8;Strands1=1;Strands2=0;Qual1=33;Qual2=0;Pvalue=1;MapQual1=1;MapQual2=0;Reads1Plus=8;Reads1Minus=0;Reads2Plus=0;Reads2Minus=0
 hg38_knownGene_ENST00000610292.4	25	.	G	0	.	.	AF=0;DP=8;Strands1=1;Strands2=0;Qual1=33;Qual2=0;Pvalue=1;MapQual1=1;MapQual2=0;Reads1Plus=8;Reads1Minus=0;Reads2Plus=0;Reads2Minus=0

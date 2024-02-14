@@ -16,3 +16,4 @@ s2 = s2[,c( "DP", "Pvalue", "AF" )]
 s0 = s0[which(s2$AF>0.0)]
 s2 = s2[which(s2$AF>0.0)]
 somatic = cbind(s0, s2)
+fwrite(somatic, "Varscan_cleaned.csv", sep = ",", row.names=FALSE, quote = TRUE)

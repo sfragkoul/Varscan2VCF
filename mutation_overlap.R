@@ -1,60 +1,18 @@
+
 rm(list = ls())
 gc()
 
+library(vcfR)
 library(data.table)
-library(stringr)
 
+somatic_vcf <- read.vcfR( paste0("test_file.vcf"), 
+                          verbose = FALSE )
 
-scenarioA = fread("simulated_data_golden.vcf")
-scenarioB = fread("simulated_data_GATK_variants.vcf")
+s0 = vcfR::getFIX(somatic_vcf) |> as.data.frame() |> setDT()
+#s1 = extract_gt_tidy(somatic_vcf) |> setDT()
+s2 = extract_info_tidy(somatic_vcf) |> setDT()
+s2 = s2[,c( "DP", "Pvalue", "AF" )]
 
-
-scenarioA$scenario = "A"
-scenarioB$scenario = "B"
-scenarioB <- scenarioB[,-c(9,10)]
-
-x = rbind(scenarioA, scenarioB)
-
-
-rm(scenarioA, scenarioB)
-
-
-y = x[, c("#CHROM", "POS", "ID","REF", "ALT", "QUAL", "FILTER", "INFO","scenario"), with = FALSE]
-
-
-
-y$mut = paste( y$CHROM, y$POS, y$REF, y$ALT, sep = ":")
-
-
-z = y[, by = mut, .(
-    scenarios = paste(scenario, collapse = "+")
-)]
-
-z = z[order(z$scenarios), ]
-
-fwrite(
-    z, "mutation-overlaps.csv",
-    row.names = FALSE, quote = TRUE, sep = ","
-)
-
-
-library(ggvenn)
-library(ggplot2)
-
-y = split(y, y$scenario)
-
-
-y = list(
-    'Golden ' = y$A$mut,
-    'Mutect2' = y$B$mut
-)
-
-ggvenn(
-    y,
-    fill_color = c("#0073C2FF", "#EFC000FF")
-)
-
-ggsave(
-    filename = "mutation-overlaps.pdf",
-    width = 6, height = 6, units = "in"
-)
+s0 = s0[which(s2$AF>0.0)]
+s2 = s2[which(s2$AF>0.0)]
+somatic = cbind(s0, s2)

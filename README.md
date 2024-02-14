@@ -5,5 +5,5 @@ To install VarScan follow the intructions [here](https://anaconda.org/bioconda/v
 
 To excute this script just run `python vscan_pileup2cns2vcf.py test_file.tsv > test_file.vcf`
 
+Please note that the VCF file contains **all positions, even those without variants,** so it needs some cleaning afterwards. For further cleaning of the VCF please ran `vcf_cleaning.R` script.
 
-***Please note that the vcf file contains all positions, even those without variants, so it needs some cleaning afterwards.***
